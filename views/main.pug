@@ -1,0 +1,25 @@
+
+extends layout.pug
+
+block content
+	.container
+		.jumbotron
+			h2 wishlist
+			p where dreams come true
+
+			#search.btn.btn-primary Search
+
+block js
+	script(type="text/javascript").
+		$('#search').click(function(){
+			//alert('ouch, you clicked me');
+
+			var search = {
+				term: 'Buzz Lightyear',
+				price: '20'
+			};
+			$.post('/api/product/search', search, function(resp){
+				console.log(resp);
+			})
+		});
+		
